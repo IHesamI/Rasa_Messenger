@@ -1,7 +1,7 @@
-// import Requests from '../../API/Requests';
+let interval;
 export default (e) => {
   self.onmessage = (msg) => {
-    let interval;
+    console.error(interval);
     if (!msg.data.shoulddead) {
       interval = setInterval(async () => {
         fetch(

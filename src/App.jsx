@@ -15,14 +15,14 @@ function App() {
   const worker = new WorkerBuilder(Worker);
 
   useEffect(() => {
-    worker.postMessage({ token, chatID: 0 });
-    worker.onmessage = (msg) => {
-      dispatch(setMessages(msg.data));
-    };
-    dispatch(GetContacts());
-    document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-    });
+    // worker.postMessage({ token, chatID: 0 });
+    // worker.onmessage = (msg) => {
+    //   dispatch(setMessages(msg.data));
+    // };
+    // dispatch(GetContacts());
+    // document.addEventListener('contextmenu', (e) => {
+    //   e.preventDefault();
+    // });
   }, []);
   // const chatID = useSelector((state) => state.selectedProf.selectedChatID);
   return (
