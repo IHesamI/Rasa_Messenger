@@ -12,13 +12,13 @@ import App from './App';
 const persistedStore = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistedStore}>
-        <App />
+        <AppRouter />
       </PersistGate>
     </Provider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
 
 // serviceWorker.register();
