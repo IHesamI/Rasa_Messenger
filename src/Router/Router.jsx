@@ -1,13 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import Navigate from react-router-dom
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import routes from './Routes/Routes';
 import Login from '../Pages/Login';
 import { toast } from 'react-toastify';
+import { io } from 'socket.io-client';
 
 const AppRouter = () => {
   const [isAuth, setIsAuth] = useState(false);
   const stateToken = useSelector((state) => state.profile.jwt);
+  const [connected,setConnected]=useState(false);
+  const socket=useRef();
   useEffect(() => {
     if (stateToken !== '') {
       setIsAuth(true);
@@ -15,7 +18,17 @@ const AppRouter = () => {
       console.log('Stoken', stateToken);
     }
   }, [stateToken]);
-  console.log(isAuth);
+  useEffect(()=>{
+    if (!connected){
+      socket.current=io('http://localhost:3000/',);
+      console.error(socket.current);
+      setConnected(true);
+    }
+    else{
+      console.error(socket.current);
+    }
+  },[]);
+  
   function routeToRender(route) {
     let componentToRender;
 
