@@ -11,8 +11,6 @@ const AppRouter = () => {
   const [isAuth, setIsAuth] = useState(false);
   // const lang=uselang();
   if (!localStorage.getItem['fa']) {
-    console.error('hello');
-    console.error(lang)
     Object.keys(lang).forEach(key=>
       localStorage.setItem(key,JSON.stringify(lang[key])))
   }

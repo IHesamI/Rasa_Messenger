@@ -25,8 +25,6 @@ const Chatlist = ({ isopen }) => {
   const dispatch = useDispatch();
   const lists = useSelector((store) => store.messageList.messages);
   const selectedChat = useSelector((store) => store.selectedProf.selectedChatID);
-  // console.log(selectedChat)
-  console.error(lists);
   useEffect(() => {
     if (selectedChat) {
       const profile = lists.filter((ele) => ele.profile.profileID == selectedChat)[0];

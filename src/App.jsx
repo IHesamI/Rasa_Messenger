@@ -7,8 +7,8 @@ import WorkerBuilder from './Workers/web/WorkerBuilder';
 import Worker from './Workers/web/RequestHandler';
 import { GetContacts, setMessages } from './features/chatCardPreviewSlice';
 import ChatContainer from './Components/ChatComps/ChatContainer';
-
 // import { layoutContext } from './Components/Layout.jsx';
+
 function App() {
   const token = useSelector((state) => state.profile.jwt);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function App() {
     //   e.preventDefault();
     // });
   }, []);
-  // const chatID = useSelector((state) => state.selectedProf.selectedChatID);
+
   return (
     <Layout>
       <ChatContainer />
