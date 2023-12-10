@@ -20,7 +20,7 @@ export default function API() {
 
   // POST function
   async function POST(endpoint, body, header) {
-    const res = await axios.post(`${BASE_URL}/${endpoint}`, body, {
+    const res = await axios.post(`${BASE_URL}${endpoint}`, body, {
       headers: header
     });
     // console.log(res);

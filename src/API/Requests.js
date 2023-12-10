@@ -51,8 +51,9 @@ export default function Requests(body) {
     console.log(body);
     try {
       // console.log('Sending request to login...');
-      const loginPromis = API().POST('access/login', body, HEADER);
-      const res = await loginPromis;
+      const res = await API().POST('login', body, HEADER);
+      // const res = await loginPromis;
+      console.error(res);
       localStorage.setItem('token', res.data.jwt);
       return res;
     } catch (err) {
