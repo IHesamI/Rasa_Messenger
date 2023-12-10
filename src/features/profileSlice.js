@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Requests from '../API/Requests';
 
 const initialState = {
+  lang: 'fa',
   jwt: '',
   profileData: {},
   signupdata: null
@@ -32,6 +33,10 @@ const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
+    changelang: (state, action) => {
+      const { lang } = action.payload;
+      state.lang = lang;
+    },
     clearLogin: (state) => {
       state.jwt = '';
       localStorage.removeItem('token');
@@ -73,7 +78,7 @@ const profileSlice = createSlice({
         }
       })
       .addCase(loginUserProfile.fulfilled, (state, action) => {
-        console.error(action.payload)
+        console.error(action.payload);
         if (action.payload.jwt) {
           state.jwt = action.payload.jwt;
           state.profileData = action.payload.profile;

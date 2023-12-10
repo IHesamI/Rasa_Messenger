@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getTheme } from '../utility/useLoclStorage';
-import Requests from '../API/Requests';
 import { loginUserProfile } from '../features/profileSlice';
+import * as lang from '../hooks/useLang';
 
 export default function Login() {
-  const RequestHandeler = Requests();
+  // const lang=uselang.lang();
   const dispatch = useDispatch();
   const values = useRef({
     email: '',
@@ -97,7 +96,7 @@ export default function Login() {
               <button
                 onClick={handleRegisterClick}
                 className="w-full rounded-md bg-[rgb(0,92,75)] px-4 py-2 tracking-wide text-white transition-colors duration-200 hover:bg-[#7fc2cf] focus:bg-[#135461] focus:outline-none">
-                ورود
+                {lang.uselang('enter')}
               </button>
               {LoginError && <p className="text-xs text-red-500 mt-5">{LoginError}</p>}
 
