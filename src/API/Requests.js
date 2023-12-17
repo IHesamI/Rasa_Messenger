@@ -7,8 +7,6 @@ import axios from 'axios';
 
 export default function Requests(body) {
   // const token = useSelector((state) => state.profile.jwt);
-  // console.log(JSON.parse(localStorage.getItem('persist:profile')).jwt);
-  console.log();
   const AutorizeHeader = {
     ...HEADER,
     Authorization: `${localStorage.getItem('token')}`
@@ -38,9 +36,8 @@ export default function Requests(body) {
   async function Register(body) {
     try {
       // console.log('Sending request to sign up...');
-      const res = await API().POST('access/signup', body, HEADER);
-      localStorage.setItem('token', res.data.jwt);
-      console.error(res);
+      console.error(body);
+      const res = await API().POST('register', body, HEADER);
       return res;
     } catch (err) {
       console.log(err);

@@ -16,8 +16,8 @@ import GroupChannelAdd from './GroupChannelAdd.jsx';
 export default function SidebarMenu({ profileImage, username, divref }) {
   // const [menu, setmenu] = useState(NUM_SIDEBAR_DEFAULT);
   const menu = useSelector((state) => state.rightsideMenues.ParentType);
-  const profile = useSelector((state) => state.profile);
-
+  const {profile:profile , profColor:profColor }= useSelector((state) => state.profile.profileData);
+  console.error(profile);
   const Menues = {
     [NUM_SIDEBAR_DEFAULT]: ['Defualt', <Default />],
     [NUM_SIDEBAR_SETTINGS]: ['تنظیمات', <Settings />],
@@ -31,17 +31,19 @@ export default function SidebarMenu({ profileImage, username, divref }) {
         <>
           <div className=" w-[100%] h-[200px] flex flex-col justify-end gap-6 pt-0 ">
             <div
-              className="flex w-[100%] object-cover h-[100%] flex-col justify-end place-items-end px-5 bg-gradient-to-r from-bghovor  to-[#005C4B] b pb-6  bg-cover  bg-center "
+              className="flex w-[100%] object-cover h-[100%] flex-col justify-end place-items-end px-5 bg-gradient-to-r from-bghovor  to-[#005C4B] b pb-6  bg-cover  bg-center"
               // style={{ backgroundImage: 'var(backgroundPattern)', backgroundBlendMode:'soft-light' }}
             >
+              {/* "{\"status\":\"200\",\"profile\":{\"id\":14,\"name\":\"zarp\",\"userName\":\"\",\"email\":\"z@gmail.com\",\"mediaId\":14,\"userId\":14},\"jwt\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiekBnbWFpbC5jb20iLCJpYXQiOjE3MDI4MDg5NDcsImV4cCI6MTcwMzQxMzc0N30.rDLQcj1drmrrbUMEXqVqfjXGWQ6QA8GZR-5fOGbnk8k\",\"profColor\":\"#123123\"}"
+ */}
               <Avatar
-                image={profile.profileData.lastProfilePicture}
+                image={profile.name}
                 size={90}
-                imagecolor={profile.profileData.defaultProfileColor}
-                char={profile.profileData.profileName[0]}
+                imagecolor={profColor}
+                char={profile.name[0]}
                 // isOnline={true}
               />
-              <p className="text-white text-end mt-4 m-6">{profile.profileData.profileName}</p>
+              <p className="text-white text-end mt-4 m-6">{profile.name}</p>
             </div>
           </div>
         </>

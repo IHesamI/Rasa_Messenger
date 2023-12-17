@@ -12,7 +12,7 @@ export default function ChatContainer() {
   const chatID = useSelector((state) => state.selectedProf.selectedChatID);
   const selectedProfile = useSelector((state) => state.selectedProf.profileinfo);
   const lastmassage = useSelector((state) => state.selectedProf.lastmsgId);
-  console.error(lastmassage);
+
   const dispatch = useDispatch();
   const bodyref = useRef(null);
   const messages = useSelector((state) => state.selectedProf.Chatmessages);

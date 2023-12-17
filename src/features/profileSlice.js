@@ -3,14 +3,14 @@ import Requests from '../API/Requests';
 
 const initialState = {
   lang: 'fa',
-  jwt: '',
   profileData: {},
   signupdata: null
 };
 const registerUserProfile = createAsyncThunk('profile/sendRegisterData', async (body) => {
   try {
-    const data = await Requests().Register(body);
-    return { data: data, body: body };
+    const { data: profile } = await Requests().Register(body);
+
+    return { profile };
   } catch (error) {
     console.log(error);
   }
@@ -38,8 +38,8 @@ const profileSlice = createSlice({
       state.lang = lang;
     },
     clearLogin: (state) => {
-      state.jwt = '';
       localStorage.removeItem('token');
+      localStorage.removeItem('persist:profile');
       window.location.assign('/Login');
       console.log('hello');
     },
@@ -66,13 +66,14 @@ const profileSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(registerUserProfile.fulfilled, (state, action) => {
-        state.signupdata = action.payload.body;
+        state.profileData = {...action.payload.profile,profColor:'#123123'};
       })
       .addCase(verifyemail.fulfilled, (state, action) => {
         console.error(action.payload);
         state.jwt = action.payload.jwt;
         state.profileData = action.payload.profile;
         if (action.payload.jwt != '') {
+          console.error('zarp',action.payload);
         } else {
           throw { error: 'wrong infos' };
         }

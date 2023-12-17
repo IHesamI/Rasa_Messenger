@@ -14,9 +14,9 @@ const persistedStore = persistStore(store);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistedStore}>
+      {/* <PersistGate loading={null} persistor={persistedStore}> */}
         <AppRouter />
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>
 );

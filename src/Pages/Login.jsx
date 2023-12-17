@@ -96,7 +96,8 @@ export default function Login() {
               <button
                 onClick={handleRegisterClick}
                 className="w-full rounded-md bg-[rgb(0,92,75)] px-4 py-2 tracking-wide text-white transition-colors duration-200 hover:bg-[#7fc2cf] focus:bg-[#135461] focus:outline-none">
-                {lang.uselang('enter')}
+                {/* {lang.uselang('enter')} */}
+                ورود
               </button>
               {LoginError && <p className="text-xs text-red-500 mt-5">{LoginError}</p>}
 

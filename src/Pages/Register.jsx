@@ -59,15 +59,7 @@ export default function Register() {
             password: values.current.password
           })
         );
-      
-        // dispatch(
-        //   setInfo({
-        //     name: values.current.username,
-        //     email: values.current.email,
-        //     password: values.current.password
-        //   })
-        // );
-        window.location.href = '/verify';
+        window.location.href = '/';
       } catch (err) {
         console.log(err);
       }
