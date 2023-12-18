@@ -13,16 +13,16 @@ import RightSide from './RightSideBar/Rightside';
 //       return { ...state, chatid: action.chatid, chattype: action.chattype };
 //   }
 // }
+
 const Layout = ({ children }) => {
   useEffect(() => {
     const div = document.getElementById('zarp');
     div.dataset.theme = getTheme() ? getTheme() : 'light';
   }, []);
 
-  // const [chatid, setChatId] = useState(null);
-  // const [chat, dispatch] = useReducer(reducer, { chatid: null, chattype: null });
-  const selectedContacts = useSelector((state) => state.selectedProf);
-  const chatID = selectedContacts.selectedChatID;
+  const { selectedContacts: chatID } = useSelector((state) => state.selectedProf);
+
+  console.error('zarp namosan');
   return (
     <div
       className={'flex h-screen w-screen overflow-hidden font-estedad vsmmobile:relative '}

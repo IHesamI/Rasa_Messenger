@@ -48,10 +48,8 @@ export default function Requests(body) {
     console.log(body);
     try {
       // console.log('Sending request to login...');
-      const res = await API().POST('login', body, HEADER);
-      // const res = await loginPromis;
-      console.error(res);
-      localStorage.setItem('token', res.data.jwt);
+      const res = await API().POST('login/', body, HEADER);
+      // localStorage.setItem('token', res.data.jwt);
       return res;
     } catch (err) {
       console.log(err);

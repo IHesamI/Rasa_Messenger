@@ -8,6 +8,7 @@ import Worker from './Workers/web/RequestHandler';
 import { GetContacts, setMessages } from './features/chatCardPreviewSlice';
 import ChatContainer from './Components/ChatComps/ChatContainer';
 // import { layoutContext } from './Components/Layout.jsx';
+import { io } from 'socket.io-client';
 
 function App() {
   const token = useSelector((state) => state.profile.jwt);
@@ -15,10 +16,12 @@ function App() {
   const worker = new WorkerBuilder(Worker);
 
   useEffect(() => {
-    // worker.postMessage({ token, chatID: 0 });
-    // worker.onmessage = (msg) => {
-    //   dispatch(setMessages(msg.data));
-    // };
+    // worker.postMessage({ type: 'init', io, url: 'http://localhost:3000/' });
+    worker.postMessage({ type: 'init'});
+    worker.onmessage = (msg) => {
+      console.error(msg);
+    };
+
     // dispatch(GetContacts());
     // document.addEventListener('contextmenu', (e) => {
     //   e.preventDefault();

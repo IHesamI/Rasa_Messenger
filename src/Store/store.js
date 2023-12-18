@@ -8,7 +8,7 @@ import SelectedProf from '../features/SelectedInfo';
 import chatCardPreviewReducer from '../features/chatCardPreviewSlice';
 import composerSliceReducer from '../features/composerSlice';
 import SharedMediaReducer from '../features/SharedMediaSlice';
-import signupinfo from '../features/SignUpInfo.js';
+// import signupinfo from '../features/SignUpInfo.js';
 const profilePersistConfig = {
   key: 'profile',
   storage
@@ -25,7 +25,7 @@ export const store = configureStore({
     messageList: chatCardPreviewReducer,
     composer: composerSliceReducer,
     SharedMedia: SharedMediaReducer,
-    signupinfo: signupinfo
+    // signupinfo: signupinfo
   },
   middleware: [thunk]
 });

@@ -28,7 +28,7 @@ export default function Login() {
     } else {
       try {
         await dispatch(loginUserProfile(values.current));
-        window.location.href = '/';
+        // window.location.href = '/';
       } catch (err) {
         setLoginError("اشتباهی رخ داد، مجددا امتحان کنید.")
         console.log(err);

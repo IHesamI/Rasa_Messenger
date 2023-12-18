@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import routes from './Routes/Routes';
 import Login from '../Pages/Login';
 import { toast } from 'react-toastify';
-import { io } from 'socket.io-client';
 
 const AppRouter = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -16,21 +15,17 @@ const AppRouter = () => {
   const stateToken = useSelector((state) => state.profile.profileData.jwt);
   console.error(stateToken);
   const [connected, setConnected] = useState(false);
-  const socket = useRef();
+  // const socket = useRef();
   useEffect(() => {
-    if (stateToken !== '') {
+    if (stateToken) {
       setIsAuth(true);
-      toast.success('ورود با موفقیت انجام شد');
-      console.log('Stoken', stateToken);
+      // toast.success('ورود با موفقیت انجام شد');
     }
   }, [stateToken]);
   useEffect(() => {
     if (!connected) {
-      socket.current = io('http://localhost:3000/');
-      console.error(socket.current);
+      // socket.current = io('http://localhost:3000/');
       setConnected(true);
-    } else {
-      console.error(socket.current);
     }
   }, []);
 

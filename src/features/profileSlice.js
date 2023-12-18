@@ -2,9 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Requests from '../API/Requests';
 
 const initialState = {
-  lang: 'fa',
   profileData: {},
-  signupdata: null
+  profileConfig: {
+    lang: 'fa',
+    theme: 'light',
+    profileColor: '#123123',
+  }
 };
 const registerUserProfile = createAsyncThunk('profile/sendRegisterData', async (body) => {
   try {
@@ -23,8 +26,10 @@ const verifyemail = createAsyncThunk('profile/verifyemail', async (body) => {
 
 const loginUserProfile = createAsyncThunk('profile/sendLoginData', async (body) => {
   try {
-    const data = await Requests().Login(body);
-    return data.data;
+    const {
+      data: { jwt, profile }
+    } = await Requests().Login(body);
+    return { jwt, profile};
   } catch (error) {
     console.log(error);
   }
@@ -66,23 +71,23 @@ const profileSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(registerUserProfile.fulfilled, (state, action) => {
-        state.profileData = {...action.payload.profile,profColor:'#123123'};
+        state.profileData = { ...action.payload.profile };
       })
       .addCase(verifyemail.fulfilled, (state, action) => {
         console.error(action.payload);
         state.jwt = action.payload.jwt;
         state.profileData = action.payload.profile;
         if (action.payload.jwt != '') {
-          console.error('zarp',action.payload);
+          console.error('zarp', action.payload);
         } else {
           throw { error: 'wrong infos' };
         }
       })
       .addCase(loginUserProfile.fulfilled, (state, action) => {
         console.error(action.payload);
-        if (action.payload.jwt) {
-          state.jwt = action.payload.jwt;
-          state.profileData = action.payload.profile;
+        const { jwt, profile } = action.payload;
+        if (jwt) {
+          state.profileData = { ...profile, jwt };
         } else {
           throw { error: 'didnt logged' };
         }

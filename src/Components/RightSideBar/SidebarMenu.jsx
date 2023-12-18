@@ -16,8 +16,10 @@ import GroupChannelAdd from './GroupChannelAdd.jsx';
 export default function SidebarMenu({ profileImage, username, divref }) {
   // const [menu, setmenu] = useState(NUM_SIDEBAR_DEFAULT);
   const menu = useSelector((state) => state.rightsideMenues.ParentType);
-  const {profile:profile , profColor:profColor }= useSelector((state) => state.profile.profileData);
-  console.error(profile);
+  const {name}= useSelector((state) => state.profile.profileData);
+  const {profileColor}= useSelector((state) => state.profile.profileConfig);
+
+  // console.error(profile);
   const Menues = {
     [NUM_SIDEBAR_DEFAULT]: ['Defualt', <Default />],
     [NUM_SIDEBAR_SETTINGS]: ['تنظیمات', <Settings />],
@@ -37,13 +39,13 @@ export default function SidebarMenu({ profileImage, username, divref }) {
               {/* "{\"status\":\"200\",\"profile\":{\"id\":14,\"name\":\"zarp\",\"userName\":\"\",\"email\":\"z@gmail.com\",\"mediaId\":14,\"userId\":14},\"jwt\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiekBnbWFpbC5jb20iLCJpYXQiOjE3MDI4MDg5NDcsImV4cCI6MTcwMzQxMzc0N30.rDLQcj1drmrrbUMEXqVqfjXGWQ6QA8GZR-5fOGbnk8k\",\"profColor\":\"#123123\"}"
  */}
               <Avatar
-                image={profile.name}
+                image={name}
                 size={90}
-                imagecolor={profColor}
-                char={profile.name[0]}
+                imagecolor={profileColor}
+                char={name[0]}
                 // isOnline={true}
               />
-              <p className="text-white text-end mt-4 m-6">{profile.name}</p>
+              <p className="text-white text-end mt-4 m-6">{name}</p>
             </div>
           </div>
         </>

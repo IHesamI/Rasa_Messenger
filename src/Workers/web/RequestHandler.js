@@ -1,27 +1,25 @@
-let interval;
+
+export function initalSocket(url, io) {
+  // socket = io(url);
+  self.postMessage({'status':'ok'})
+}
+
+export function updateHandler() {}
+
 export default (e) => {
   self.onmessage = (msg) => {
-    console.error(interval);
-    if (!msg.data.shoulddead) {
-      interval = setInterval(async () => {
-        fetch(
-          `http://185.60.136.206:8080?` +
-          // `http://192.168.70.231:8080?` +
-            new URLSearchParams({
-              active_chat: 0
-            }),
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              Authorization: `${msg.data.token}`
-            },
-            method: 'GET'
-          }
-        )
-          .then((resp) => resp.json())
-          .then((data) => postMessage(data));
-      }, 1000);
+    // importScripts('./manageMessages.js');
+    console.error(msg);
+    const { type, payload } = msg.data;
+    switch (type) {
+      case 'init': {
+        // const { url, io } = payload;
+        console.error('zarp');
+        // initalSocket(url, io);
+      }
+      case 'zarp': {
+        break;
+      }
     }
   };
 };
